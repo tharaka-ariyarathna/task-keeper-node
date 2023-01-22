@@ -48,9 +48,20 @@ export const editTask = (req, res) => {
     if (description) {
       task.description = description;
     }
-    console.log(taskList[id]) ;
     return res.status(200).json("Task updated successfully");
   } else {
     return res.status(404).json("Task not found");
   }
 };
+
+//delete a task
+export const deleteTask = (req, res) => {
+    const id = req.params.id ;
+    const task = taskList.find(task => task.id == id) ;
+    if(task){
+        taskList.splice(taskList.indexOf(task), 1) ;
+        return res.status(200).json("Task removed successfully") ;
+    }else{
+        return res.status(404).json("Task not found") ;
+    }
+}
