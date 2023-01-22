@@ -3,17 +3,14 @@ const taskList = [];
 //Creating a task
 export const createTask = (req, res) => {
   const { title, description } = req.body;
-  if (title && description) {
-    const task = {
-      title: title,
-      description: description,
-      id: taskList.length + 1,
-    };
-    taskList.push(task);
-    return res.status(200).json("Task added successfully");
-  } else {
-    return res.status(400).json("Incomplete request");
-  }
+  const task = {
+    title: title,
+    description: description,
+    id: taskList.length + 1,
+  };
+  taskList.push(task);
+  return res.status(200).json("Task added successfully");
+  
 };
 
 //get tasks
