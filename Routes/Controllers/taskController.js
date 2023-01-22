@@ -25,6 +25,17 @@ export const getTasks = (req, res) => {
     }
 }
 
+//get specific task
+export const getTask = (req, res) => {
+    const id = req.params.id ;
+    const task = taskList.find((task) => task.id == id) ;
+    if(task){
+        return res.status(200).json({task : task}) ;
+    }else{
+        return res.status(404).json("Task not found") ;
+    }
+}
+
 
 
 
