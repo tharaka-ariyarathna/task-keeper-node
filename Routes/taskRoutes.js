@@ -5,15 +5,15 @@ import {
   getTask,
   editTask,
   deleteTask,
-} from "./Controllers/taskController.js";
-import { createValidation } from "./Controllers/middleware/requestValidation.js";
+} from "../Controllers/taskController.js";
+import { createTaskValidation, taskValidation } from "../middleware/requestValidation.js";
 
 const router = express.Router();
 
-router.post("/", createValidation, createTask);
+router.post("/", createTaskValidation, createTask);
 router.get("/", getTasks);
-router.get("/:id", getTask);
-router.put("/:id", editTask);
-router.delete("/:id", deleteTask);
+router.get("/:id", taskValidation, getTask);
+router.put("/:id", taskValidation, editTask);
+router.delete("/:id", taskValidation, deleteTask);
 
 export default router;

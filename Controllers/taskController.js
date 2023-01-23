@@ -1,4 +1,5 @@
 const taskList = [];
+let id = 0 ;
 
 //Creating a task
 export const createTask = (req, res) => {
@@ -6,7 +7,7 @@ export const createTask = (req, res) => {
   const task = {
     title: title,
     description: description,
-    id: taskList.length + 1,
+    id: id + 1,
   };
   taskList.push(task);
   return res.status(200).json("Task added successfully");
