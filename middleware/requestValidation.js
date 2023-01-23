@@ -17,3 +17,8 @@ export const taskValidation = (req, res, next) => {
         return res.status(400).json("Incomplete request") ;
     }
 }
+
+//Test middleware
+export const test = (req, res, next) => {
+    next()
+}
