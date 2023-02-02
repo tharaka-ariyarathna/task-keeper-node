@@ -6,7 +6,10 @@ import {
   editTask,
   deleteTask,
 } from "../Controllers/taskController.js";
-import { createTaskValidation, taskValidation } from "../middleware/requestValidation.js";
+import {
+  createTaskValidation,
+  taskValidation,
+} from "../middleware/requestValidation.js";
 
 const router = express.Router();
 

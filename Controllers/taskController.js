@@ -1,5 +1,5 @@
 const taskList = [];
-let id = 0 ;
+let id = 0;
 
 //Creating a task
 export const createTask = (req, res) => {
@@ -10,17 +10,18 @@ export const createTask = (req, res) => {
     id: id + 1,
   };
   taskList.push(task);
-  return res.status(200).json("Task added successfully");
-  
+  id++;
+  return res.status(200).json(task);
 };
 
 //get tasks
 export const getTasks = (req, res) => {
-  if (taskList.length > 0) {
-    return res.status(200).json({ taskList: taskList });
+  /*if (taskList.length > 0) {
+    return res.status(200).json(taskList );
   } else {
     return res.status(404).json("No task to display");
-  }
+  }*/
+  return res.status(200).json(taskList);
 };
 
 //get specific task
@@ -46,7 +47,7 @@ export const editTask = (req, res) => {
     if (description) {
       task.description = description;
     }
-    return res.status(200).json("Task updated successfully");
+    return res.status(200).json(task);
   } else {
     return res.status(404).json("Task not found");
   }
@@ -54,12 +55,12 @@ export const editTask = (req, res) => {
 
 //delete a task
 export const deleteTask = (req, res) => {
-    const id = req.params.id ;
-    const task = taskList.find(task => task.id == id) ;
-    if(task){
-        taskList.splice(taskList.indexOf(task), 1) ;
-        return res.status(200).json("Task removed successfully") ;
-    }else{
-        return res.status(404).json("Task not found") ;
-    }
-}
+  const id = req.params.id;
+  const task = taskList.find((task) => task.id == id);
+  if (task) {
+    taskList.splice(taskList.indexOf(task), 1);
+    return res.status(200).json("Task removed successfully");
+  } else {
+    return res.status(404).json("Task not found");
+  }
+};
